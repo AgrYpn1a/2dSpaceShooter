@@ -1,7 +1,7 @@
 # 2D Space Shooter
 
 ---
-> ### *made with Unity3D*
+### *made with Unity3D*
 
 #### How to install & use
 
