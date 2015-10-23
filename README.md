@@ -1,6 +1,6 @@
 
-# 2D Space Shooter 
-![Player](/Assets/_gfx/player/DurrrSpaceShip_1.png)
+# ![Player](/Assets/_gfx/player/DurrrSpaceShip_1.png)2D Space Shooter![Player](/Assets/_gfx/player/DurrrSpaceShip_1.png)
+
 ---
 ## *made with Unity3D*
 #### How to install & use
