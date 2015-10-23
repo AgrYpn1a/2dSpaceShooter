@@ -4,7 +4,7 @@
 -
 #### How to install & use
 
-This is a sample text.This is a sample text.
+`This is a sample text. This is a sample text.`
 
 #### Project overview
 
