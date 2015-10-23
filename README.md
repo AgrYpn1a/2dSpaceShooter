@@ -3,6 +3,25 @@
 ---
 ## *made with Unity3D*
 
+---
+
+### Check list
+
+> version 0.1
+- [x] Player Controller
+- [x] Basic EnemyAI behaviour
+- [ ] Extended EnemyAI behaviour
+- [ ] Score
+- [ ] Main Menu
+- [ ] Final touch (visuals) & build 
+
+---
+
+### Project overview
+
+- 2D Space Shooter game with very simple mechanics made for a University project. It contains basic space ship controller script, score system and a very limited EnemyAI behaviour.  
+- All code is written in C#, and commented out.
+
 ### How to install & use
 
 In order to be able to correctly use this project, you have to: 
@@ -22,7 +41,7 @@ In order to be able to correctly use this project, you have to:
 ```
 - Finally, open Unity, then go to Open Project and navigate to project directory
 
-#### Project overview
+### Code samples & explanation
 
 ```C#
 void Start()
