@@ -6,13 +6,15 @@
 
 ### Check list
 
-> version 0.1
+*version 0.1*
+
 - [x] Player Controller
 - [x] Basic EnemyAI behaviour
 - [ ] Extended EnemyAI behaviour
 - [ ] Score
 - [ ] Main Menu
 - [ ] Final touch (visuals) & build 
+- [ ] Write detailed documentation
 
 
 ### Project overview
