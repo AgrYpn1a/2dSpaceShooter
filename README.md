@@ -1,6 +1,5 @@
 # 2D Space Shooter
 
----
 ## *made with Unity3D*
 
 ---
@@ -15,7 +14,6 @@
 - [ ] Main Menu
 - [ ] Final touch (visuals) & build 
 
----
 
 ### Project overview
 
