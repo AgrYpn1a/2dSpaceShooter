@@ -6,7 +6,7 @@
 
 ### Check list
 
-*version 0.120151023*
+*version 1.0*
 
 - [x] Player Controller
 - [x] Basic EnemyAI behaviour
