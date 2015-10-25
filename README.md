@@ -1,4 +1,4 @@
-# 2D Space Shooter
+![logo](Assets/_Graphics/logo.png)
 
 ## *made with Unity3D*
 
