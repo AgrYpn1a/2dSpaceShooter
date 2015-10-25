@@ -43,6 +43,40 @@ In order to be able to correctly use this project, you have to:
 
 ### Code samples & explanation
 
+##### Project structure
+
+Project files are spread throughout several directories. Directories containing "raw" assets are named with _ before the name, for example `_Graphics` directory. 
+
+Folder hierarchy:
+
+- **_Graphics**
+
+  *Contains all graphic elements, art for player ship, enemies, backgrounds etc.*
+  
+- **_Sound**
+
+  *Contains in game sounds.*
+  
+- **Animations**
+
+  *Contains simple animation files.*
+
+- **Prefabs**
+
+  *Prefabs are game objects that are saved within project files and used throughout scenes. They can be instantiated at runtime and in this project we use prefabs to save our enemies and different laser types, which we can then spawn in game whenever we want.*
+  
+- **Scenes**
+
+  *Game is divided in scenes, because of course we do need really need to keep all the stuff in one scene, it's not good, plus its memory consuming(even though this project is really small, its always good to seperate scenes by their purpose.*
+  
+  *In 'demo' scene we prototype new things that we want to add to game, such as if we decide to add new type of enemy, we should first test how it behaves somewhere else other than directly in our main, 'game' scene, for the sake of organisation.*
+  
+  *Scenes 'menu' & 'score' are self explainatory.*
+  
+- **Scripts**
+
+  *This folder contains all our "scripts", which are actually C# classes. Scripts are again divided into couple of folders for the sake of organisation.*
+
 ```C#
 void Start()
 {
