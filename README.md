@@ -12,7 +12,7 @@
 - [x] Basic EnemyAI behaviour
 - [ ] Extended EnemyAI behaviour
 - [ ] Score
-- [ ] Main Menu
+- [x] Main Menu
 - [ ] Final touch (visuals) & build 
 - [ ] Write detailed documentation
 
@@ -31,7 +31,7 @@ In order to be able to correctly use this project, you have to:
 
 - Note, in order to use VS with Unity, you need to have Unity VS Tools installed. It should install by default with latest Unity installation. However, if for some reason it does not, you can download [**here**](https://www.visualstudio.com/en-us/features/unitytools-vs.aspx). 
 
-**3. Clone this projet into an empty diretory, and open it with Unity**  
+**3. Clone this project into an empty directory, and open it with Unity**  
 - Download [**GIT**](https://git-scm.com/download/win) client and install it with default configuration
 - Right click in an empty folder and `Git Bash Here`
 - Now type following: 
