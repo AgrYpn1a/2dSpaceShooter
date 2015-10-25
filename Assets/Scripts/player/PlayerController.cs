@@ -80,12 +80,12 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         // set stats
-        shipSpeed = stats.speed;
-        shipRotationDegree = stats.rotationDegree;
+        this.shipSpeed = this.stats.speed;
+        this.shipRotationDegree = this.stats.rotationDegree;
 
-        projectileSpeed = weapons.GunLaserSpeed;
-        weapon = weapons.LaserType;
-        weaponHp = weapons.LaserHP;
+        this.projectileSpeed = this.weapons.GunLaserSpeed;
+        this.weapon = this.weapons.LaserType;
+        this.weaponHp = this.weapons.LaserHP;
     }
 
     void Update()
@@ -113,7 +113,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // apply movement restriction
-        this.transform.position = restrictPosition();
+        this.transform.position = this.restrictPosition();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Player dead!");
+            Score.selfInstance.SaveScore();
+            Application.LoadLevel("menu");
+        }
     }
 
     private void shoot()
@@ -126,7 +133,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 restrictPosition()
     {
         // Mathf.Clamp() keeps value between min and max given
-        return new Vector2(Mathf.Clamp(this.transform.position.x, boundaries.left, boundaries.right),
-            Mathf.Clamp(this.transform.position.y, boundaries.bottom, boundaries.top));
+        return new Vector2(Mathf.Clamp(this.transform.position.x, this.boundaries.left, this.boundaries.right),
+            Mathf.Clamp(this.transform.position.y, this.boundaries.bottom, this.boundaries.top));
     }
 }

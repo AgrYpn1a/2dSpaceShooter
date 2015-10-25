@@ -19,4 +19,5 @@ public abstract class IEnemyAI : MonoBehaviour
 
     public abstract void EnemyBehaviour();
     public abstract void ApplyDamage();
+    public abstract void Death();
 }

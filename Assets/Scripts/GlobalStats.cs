@@ -10,6 +10,7 @@ public class GlobalStats : MonoBehaviour
     */
     public int playerDamage;
     public float enemyDamage;
+    public int kerbanautKillScore;
 
     // beccause this class inherits Monobehaviour it cannot be static.
     // In order to achieve this, we have to use pattern called Singleton

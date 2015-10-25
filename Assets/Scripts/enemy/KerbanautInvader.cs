@@ -14,7 +14,7 @@ public class KerbanautInvader : IEnemyAI
 
     void Start()
     {
-        initializeLerp();
+        this.initializeLerp();
     }
 
     void Update()
@@ -26,36 +26,25 @@ public class KerbanautInvader : IEnemyAI
     {
         /*
             The basic idea, is to generate a random vector each [time interval in seconds]
-            and let the enemy move from its old position to the new position,
+            and move the enemy from old position to a new one.
             
-            Now problem is, that if we generate too high a number, our enemy will leave the screen.
-            In order to fix this, we will generate a number within movement boundaries
+            Now problem is, that if we generate too high a number, enemy will leave the screen.
+            In order to fix this, we will generate a number within movement boundaries, set via inspector
 
-            We also want to make sure that enemy moves at least a visible distance, which we will 
-            ensure by setting the minimum distance between old and new position
-        */
-
-        /*
             Now we have to smooth out the transition between positions, and there is a method called Lerp
-            which will allow us to do so,
-            There is an easy way to make this work by simply tell current position to lerp from old to new : 
-            this.transform.position = Vector3.Lerp(this.transform.position, nextMove, Time.deltaTime);
-            However, this will result in inconsistent speed and make the transitions look ugly, with suden slow downs
-            This will happen because, as third parameter of Lerp() method, we have to pass the current percentage of
-            transition, but we're passing deltaTime instead, which is a small number and will never reach 1
-            in the other words, it will never allow lerp to finish
+            which will allow us to do so.
         */
 
         if (isLerping)
         {
             // we saved the time when we started lerping, and now in order to get the time difference
-            // we will substract old time from new time, and when that rises from 0 to 1, we will
-            // have our lerp finished
+            // we will substract old time from new time
+            // Time.time - oldTime, when this becomes 1 (100%), lerp is done
             currentLerpPercentage = Time.time - this.timeSinceStarted;
             if (currentLerpPercentage >= 1)
             {
-                isLerping = false;
-                initializeLerp();
+                this.isLerping = false;
+                this.initializeLerp();
                 return;
             }
             this.transform.position = Vector2.Lerp(this.oldPos, this.nextMove, currentLerpPercentage / 2);
@@ -69,11 +58,7 @@ public class KerbanautInvader : IEnemyAI
         this.timeSinceStarted = Time.time;
         this.nextMove = this.generateNextMove();
 
-        // check if nextMove meets requierements
-        //while ((nextMove - oldPos).sqrMagnitude < this.minMoveDistance && (nextMove - oldPos).sqrMagnitude > this.maxMoveDistance)
-        //{
-            this.nextMove = generateNextMove();
-        //}
+        this.nextMove = generateNextMove();
 
         this.isLerping = true;
     }
@@ -82,7 +67,7 @@ public class KerbanautInvader : IEnemyAI
     {
         Vector3 temp;
 
-        // generate nextMove relative to the boundaries
+        // generate nextMove vector relative to the boundaries
         temp = new Vector2(UnityEngine.Random.Range(this.enemyBoundaries.left, this.enemyBoundaries.right),
             UnityEngine.Random.Range(this.enemyBoundaries.top, this.enemyBoundaries.bottom));
 
@@ -93,8 +78,16 @@ public class KerbanautInvader : IEnemyAI
     {
         this.enemyHitPoints -= GlobalStats.instance.playerDamage;
         this.GetComponent<Animator>().SetTrigger("hit");
+        Death();
+    }
+
+    // when enemy dies, before we destroy it, we want to make sure that our player's score
+    // has increased by a value set in GlobalStats class
+    public override void Death()
+    {
         if (this.enemyHitPoints <= 0)
         {
+            Score.selfInstance.score += GlobalStats.instance.kerbanautKillScore;
             Destroy(this.gameObject);
         }
     }
