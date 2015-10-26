@@ -75,8 +75,12 @@ Folder hierarchy:
   
 - **Scripts**
 
-  *This folder contains all our "scripts", which are actually C# classes. Scripts are again divided into couple of folders for the sake of organisation.*
+  *This folder contains all our "scripts", which are actually C# classes. Scripts are again divided into couple of folders for the sake of organisation. There are a lot of .meta files, actually for every regular there is a .meta, what this does is helps Unity track the versions, once project is opened in Unity these files will not be visible.*
 
+##### How things work?
+
+  *This should hopefully be a short, yet detailed explanation of what is really going on with our code, our objects in scenes, prefabs etc.*
+  
 ```C#
 void Start()
 {
