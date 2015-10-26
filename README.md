@@ -79,7 +79,7 @@ Folder hierarchy:
 
 ##### How things work?
 
-  *This should hopefully be a short, yet detailed explanation of what is really going on with our code, our objects in scenes, prefabs etc.*
+  This should hopefully be short, yet detailed explanation of what is really going on with our code, our objects in scenes, prefabs etc.
   
 ```C#
 void Start()
