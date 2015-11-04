@@ -9,7 +9,7 @@ public class GlobalStats : MonoBehaviour
 
     */
     public int playerDamage;
-    public float enemyDamage;
+    public int enemyDamage;
     public int kerbanautKillScore;
 
     // beccause this class inherits Monobehaviour it cannot be static.

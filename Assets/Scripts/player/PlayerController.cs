@@ -21,6 +21,7 @@ public class ShipStats
     */
     public float speed;
     public float rotationDegree;
+    public int hitPoints;
 }
 
 [System.Serializable]
@@ -71,6 +72,9 @@ public class PlayerController : MonoBehaviour
     private Transform weaponHp;
 
     [SerializeField]
+    private ParticleSystem hitPart;
+
+    [SerializeField]
     Weapons weapons = new Weapons();
     [SerializeField]
     ShipStats stats = new ShipStats();
@@ -114,13 +118,6 @@ public class PlayerController : MonoBehaviour
 
         // apply movement restriction
         this.transform.position = this.restrictPosition();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Player dead!");
-            Score.selfInstance.SaveScore();
-            Application.LoadLevel("menu");
-        }
     }
 
     private void shoot()
@@ -135,5 +132,22 @@ public class PlayerController : MonoBehaviour
         // Mathf.Clamp() keeps value between min and max given
         return new Vector2(Mathf.Clamp(this.transform.position.x, this.boundaries.left, this.boundaries.right),
             Mathf.Clamp(this.transform.position.y, this.boundaries.bottom, this.boundaries.top));
+    }
+
+    public void ApplyDamage()
+    {
+        this.stats.hitPoints -= GlobalStats.instance.enemyDamage;
+        this.hitPart.gameObject.SetActive(true);
+        this.Death();
+    }
+
+    public void Death()
+    {
+        if (this.stats.hitPoints <= 0)
+        {
+            Debug.Log("Player dead!");
+            Score.selfInstance.SaveScore();
+            Application.LoadLevel("menu");
+        }
     }
 }

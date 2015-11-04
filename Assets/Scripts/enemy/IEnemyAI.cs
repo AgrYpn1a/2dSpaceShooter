@@ -9,11 +9,18 @@ public struct EnemyBoundaries
 public abstract class IEnemyAI : MonoBehaviour
 {
     // this is just an enemy behaviour interface
-    public float enemySpeed;
-    public int minMoveDistance;
-    public int maxMoveDistance;
     public float enemyHitPoints;
     public GameObject enemyWeapon;
+    public Transform enemyWeaponHp;
+    public int enemyWeaponSpeed;
+
+    public int fireRateMax;
+    public int fireRateMin;
+
+    public ParticleSystem deathPart;
+
+    protected bool isDead;
+
     // we need to restrict enemy movement as well
     public EnemyBoundaries enemyBoundaries;
 

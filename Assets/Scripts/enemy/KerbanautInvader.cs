@@ -12,13 +12,20 @@ public class KerbanautInvader : IEnemyAI
     private float timeSinceStarted;
     private static float currentLerpPercentage;
 
+    // shooting
+    private float nextShot;
+    private int fireRate;
+
     void Start()
     {
+        this.nextShot = Time.time + UnityEngine.Random.Range(2, 4);
         this.initializeLerp();
     }
 
     void Update()
     {
+        if (this.isDead)
+            return;
         this.EnemyBehaviour();
     }
 
@@ -49,6 +56,14 @@ public class KerbanautInvader : IEnemyAI
             }
             this.transform.position = Vector2.Lerp(this.oldPos, this.nextMove, currentLerpPercentage / 2);
         }
+
+        if (Time.time > nextShot)
+        {
+            nextShot = Time.time + fireRate;
+            fireShot();
+        }
+
+        fireRate = UnityEngine.Random.Range(fireRateMin, fireRateMax);
     }
 
     private void initializeLerp()
@@ -57,8 +72,6 @@ public class KerbanautInvader : IEnemyAI
         // Time.time measures the Time since game started
         this.timeSinceStarted = Time.time;
         this.nextMove = this.generateNextMove();
-
-        this.nextMove = generateNextMove();
 
         this.isLerping = true;
     }
@@ -76,6 +89,8 @@ public class KerbanautInvader : IEnemyAI
 
     public override void ApplyDamage()
     {
+        if (this.isDead)
+            return;
         this.enemyHitPoints -= GlobalStats.instance.playerDamage;
         this.GetComponent<Animator>().SetTrigger("hit");
         Death();
@@ -87,8 +102,17 @@ public class KerbanautInvader : IEnemyAI
     {
         if (this.enemyHitPoints <= 0)
         {
+            this.isDead = true;
             Score.selfInstance.score += GlobalStats.instance.kerbanautKillScore;
-            Destroy(this.gameObject);
+            DisplayScoreInGame.selfInstance.UpdateScore();
+            this.deathPart.gameObject.SetActive(true);
+            Destroy(this.gameObject, this.deathPart.duration);
         }
+    }
+
+    private void fireShot()
+    {
+        GameObject temp = Instantiate(this.enemyWeapon, enemyWeaponHp.position, Quaternion.identity) as GameObject;
+        temp.GetComponent<Rigidbody2D>().AddForce(-transform.up * enemyWeaponSpeed);
     }
 }
