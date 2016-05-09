@@ -56,7 +56,10 @@ public class Score : MonoBehaviour
         int counter = 0;
 
         // we replace current minimum score with current score
-        PlayerPrefs.SetInt(min, this.score);
+        if (PlayerPrefs.GetInt(min) < this.score)
+            PlayerPrefs.SetInt(min, this.score);
+        else
+            return;
         scores = makeScoreArray();
         // sorting array to be able to display scores in correct order
         scores = (from i in scores orderby i descending select i).ToArray();

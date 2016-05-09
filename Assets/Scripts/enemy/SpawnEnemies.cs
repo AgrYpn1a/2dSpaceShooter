@@ -21,25 +21,11 @@ public class SpawnEnemies : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (Time.time > checkRate)
-        {
-            checkRate = Time.time + 1f;
-            if (enemyHolder.childCount == 0)
-            {
-                // spawn new enemies
-                this.nextWave.SetActive(true);
-                this.spawnEnemies();
-            }
-        }
-        */
         if (this.enemyHolder.childCount == 0)
         {
             this.nextWave.SetActive(true);
             StartCoroutine(this.delaySpawn());
-            //this.spawnEnemies();
         }
-
     }
 
     private void spawnEnemies()
@@ -53,7 +39,6 @@ public class SpawnEnemies : MonoBehaviour
             }
             this.nextWave.SetActive(false);
             this.currentEnemySpawnCount++;
-
         }
     }
 

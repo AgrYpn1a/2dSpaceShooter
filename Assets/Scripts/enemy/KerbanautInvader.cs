@@ -78,13 +78,9 @@ public class KerbanautInvader : IEnemyAI
 
     private Vector3 generateNextMove()
     {
-        Vector3 temp;
-
         // generate nextMove vector relative to the boundaries
-        temp = new Vector2(UnityEngine.Random.Range(this.enemyBoundaries.left, this.enemyBoundaries.right),
+        return new Vector2(UnityEngine.Random.Range(this.enemyBoundaries.left, this.enemyBoundaries.right),
             UnityEngine.Random.Range(this.enemyBoundaries.top, this.enemyBoundaries.bottom));
-
-        return temp;
     }
 
     public override void ApplyDamage()
