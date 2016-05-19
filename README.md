@@ -10,11 +10,11 @@
 
 - [x] Player Controller
 - [x] Basic EnemyAI behaviour
-- [ ] Extended EnemyAI behaviour
+- [x] Extended EnemyAI behaviour
 - [x] Score
 - [x] Main Menu
-- [ ] Final touch (visuals) & build 
-- [ ] Write detailed documentation
+- [x] Final touch (visuals) & build 
+- [x] Write detailed documentation
 
 
 ### Project overview
